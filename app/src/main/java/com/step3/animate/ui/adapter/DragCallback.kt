@@ -1,4 +1,4 @@
-package com.step3.animate.adapter;
+package com.step3.animate.ui.adapter;
 
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
