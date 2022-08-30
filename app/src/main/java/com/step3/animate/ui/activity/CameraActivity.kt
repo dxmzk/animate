@@ -83,6 +83,7 @@ class CameraActivity : AppAvtivity() {
      */
     private fun bindPreview(cameraProvider: ProcessCameraProvider?) {
         var preview: Preview = Preview.Builder()
+            .setTargetAspectRatio(AspectRatio.RATIO_16_9)
             .build()
 
         var cameraSelector: CameraSelector = CameraSelector.Builder()
@@ -91,6 +92,7 @@ class CameraActivity : AppAvtivity() {
 
         imageCapture = ImageCapture.Builder()
             .setTargetRotation(previewView.display.rotation)
+            .setTargetAspectRatio(AspectRatio.RATIO_16_9)
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY) // 优化照片质量
             .build()
 
@@ -119,7 +121,7 @@ class CameraActivity : AppAvtivity() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     Log.i(TAG,"onImageSaved") // 此处是子线程非UI线程
                     imgUri = outputFileResults.savedUri;
-                    Log.i(TAG, imgUri.toString())
+
                     // 刷新状态
                     this@CameraActivity.runOnUiThread {
                         btnView.isEnabled = true
