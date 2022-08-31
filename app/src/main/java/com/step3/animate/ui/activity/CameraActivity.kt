@@ -14,9 +14,10 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import androidx.room.Transaction
 import com.google.common.util.concurrent.ListenableFuture
 import com.step3.animate.R
-import com.step3.animate.modules.base.AppAvtivity
+import com.step3.animate.modules.base.AppActivity
 import com.step3.animate.modules.room.entity.Photo
 import com.step3.animate.modules.store.PhotoStore
 import java.io.File
@@ -30,7 +31,7 @@ import java.util.concurrent.Executors
  * Date: 2022/08/30
  * Desc: 拍照界面
  */
-class CameraActivity : AppAvtivity() {
+class CameraActivity : AppActivity() {
     private val TAG = "CameraActivity";
     private var animId = 1;
     private lateinit var cameraExecutor: ExecutorService
@@ -49,7 +50,7 @@ class CameraActivity : AppAvtivity() {
         setContentView(R.layout.act_camera)
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         initView()
-        photoStore = PhotoStore(this.applicationContext)
+        getPhotoStore()
     }
 
     override fun onResume() {
@@ -160,5 +161,10 @@ class CameraActivity : AppAvtivity() {
                     }
                 }
             })
+    }
+
+    @Transaction
+    private fun getPhotoStore() {
+        photoStore = PhotoStore(applicationContext)
     }
 }

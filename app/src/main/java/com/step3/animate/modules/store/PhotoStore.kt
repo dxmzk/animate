@@ -21,10 +21,7 @@ class PhotoStore {
 
     fun getAll(): List<Photo> {
         val list = photoDao?.getAll()
-        list?.forEach {
-            Log.i(TAG, it.toString())
-        }
-        return list!!
+        return list ?: ArrayList<Photo>()
     }
 
     fun findById(id: Int) {

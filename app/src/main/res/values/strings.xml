@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">定格拍摄</string>
+    <string name="add_anim">确定</string>
     <string name="preference_key">app_preference_key</string>
 </resources>

@@ -65,7 +65,6 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun addDelay() {
             try {
-                Log.i(TAG, "addDelay")
                 Thread.sleep(10000)
             } catch (ignored: InterruptedException) {
                 ignored.printStackTrace()

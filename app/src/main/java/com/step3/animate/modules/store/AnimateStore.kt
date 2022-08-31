@@ -21,10 +21,7 @@ class AnimateStore {
 
     fun getAll(): List<Animate> {
         val list = animDao?.getAll()
-        list?.forEach {
-            Log.i(TAG, it.toString())
-        }
-        return list!!
+        return list ?: ArrayList<Animate>()
     }
 
     fun findById(id: Int): Animate {

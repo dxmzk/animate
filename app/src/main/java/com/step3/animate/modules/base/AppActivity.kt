@@ -7,5 +7,5 @@ import androidx.appcompat.app.AppCompatActivity
  * Date: 2022/08/30
  * Desc:
  */
-open class AppAvtivity: AppCompatActivity() {
+open class AppActivity: AppCompatActivity() {
 }
