@@ -1,21 +1,31 @@
 package com.step3.animate
 
 import android.app.Application
-import com.step3.animate.modules.database.AppDbConnectHelper
+import androidx.room.Transaction
+import com.step3.animate.modules.database.AppSqlHelper
+import com.step3.animate.modules.room.AppDatabase
+import com.step3.animate.utils.AppExecutors
 
 /**
  * Author: Meng
  * Date: 2022/08/30
  * Desc:
  */
-class App: Application() {
-
+class App : Application() {
+    private lateinit var executors: AppExecutors
     override fun onCreate() {
         super.onCreate()
-//        initDB()
+        executors = AppExecutors()
+        initDB()
     }
 
+    private fun getDatabase(): AppDatabase? {
+        return AppDatabase.initDB(this, executors)
+    }
+
+    @Transaction
     private fun initDB() {
-       AppDbConnectHelper(this.applicationContext)
+        getDatabase()
+//        AppSqlHelper(this.applicationContext)
     }
 }

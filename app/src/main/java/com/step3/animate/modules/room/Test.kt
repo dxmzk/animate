@@ -10,10 +10,10 @@ import android.content.Context
 class Test {
 
     fun getPhoto(context: Context) {
-        val list = RoomHelper(context).getDB().photoDao().getAll();
+        val list = getOpenDb(context).photoDao().getAll();
     }
 
     fun getAnimate(context: Context) {
-        val list = RoomHelper(context).getDB().animateDao().getAll();
+        val list = getOpenDb(context).animateDao().getAll();
     }
 }

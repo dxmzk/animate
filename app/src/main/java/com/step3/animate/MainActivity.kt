@@ -20,6 +20,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        findViewById<TextView>(R.id.main_text).setOnClickListener(View.OnClickListener {
+            openCamera()
+        })
+//        openCamera()
+    }
+
+    private fun openCamera() {
         val intent = Intent(this, CameraActivity::class.java)
         startActivity(intent)
     }

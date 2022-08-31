@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
  * Date: 2022/08/30
  * Desc:
  */
-class DbOpenHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class SqlOpenHelper(context: Context) : SQLiteOpenHelper(context, NAME, null, VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(SQL_CREATE_ANIM)
@@ -26,8 +26,7 @@ class DbOpenHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         onCreate(db)
     }
     companion object {
-        // If you change the database schema, you must increment the database version.
-        const val DATABASE_VERSION = 1
-        const val DATABASE_NAME = "animate3.db"
+        const val VERSION = 1
+        const val NAME = "animate3.db"
     }
 }

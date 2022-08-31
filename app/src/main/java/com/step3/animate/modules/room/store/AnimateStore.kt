@@ -8,20 +8,20 @@ import com.step3.animate.modules.room.entity.Animate
  * Date: 2022/08/30
  * Desc:
  */
-class AnimateStore: AnimateDao {
-    override fun getAll(): List<Animate> {
+class AnimateStore {
+    fun getAll(): List<Animate> {
         TODO("Not yet implemented")
     }
 
-    override fun findById(id: Int): List<Animate> {
+    fun findById(id: Int): List<Animate> {
         TODO("Not yet implemented")
     }
 
-    override fun insertAll(vararg users: Animate) {
+    fun insert(anim: Animate) {
         TODO("Not yet implemented")
     }
 
-    override fun delete(user: Animate) {
+    fun delete(anim: Animate) {
         TODO("Not yet implemented")
     }
 }

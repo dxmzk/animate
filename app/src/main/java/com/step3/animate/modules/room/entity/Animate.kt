@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
  * Desc:
  */
 
-@Entity
+@Entity(tableName = "animate")
 data class Animate(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
 
 )

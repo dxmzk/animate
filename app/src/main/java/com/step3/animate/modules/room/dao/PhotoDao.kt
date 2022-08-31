@@ -24,7 +24,7 @@ interface PhotoDao {
     fun findByAnimId(aid: Int): Photo
 
     @Insert
-    fun insertAll(vararg users: Photo)
+    fun insert(user: Photo)
 
     @Delete
     fun delete(user: Photo)

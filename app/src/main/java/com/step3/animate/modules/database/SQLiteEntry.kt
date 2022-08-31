@@ -39,17 +39,17 @@ import android.provider.BaseColumns
 const val SQL_CREATE_PHOTO =
     "CREATE TABLE ${SQLiteEntry.Photo.Table} (" +
             "${SQLiteEntry.Photo.Id} INTEGER PRIMARY KEY," +
-            "${SQLiteEntry.Photo.Aid} INTEGER,${SQLiteEntry.Photo.Ratio} INTEGER" +
+            "${SQLiteEntry.Photo.Aid} INTEGER,${SQLiteEntry.Photo.Ratio} INTEGER," +
             "${SQLiteEntry.Photo.Name} TEXT,${SQLiteEntry.Photo.Path} TEXT)"
 const val SQL_DELETE_PHOTO = "DROP TABLE IF EXISTS ${SQLiteEntry.Photo.Table}"
 
 const val SQL_CREATE_ANIM =
     "CREATE TABLE ${SQLiteEntry.Animate.Table} (" +
             "${SQLiteEntry.Animate.Id} INTEGER PRIMARY KEY," +
-            "${SQLiteEntry.Animate.Fps} INTEGER,${SQLiteEntry.Animate.Ratio} INTEGER" +
-            "${SQLiteEntry.Animate.Count} INTEGER,${SQLiteEntry.Animate.Tag} INTEGER" +
-            "${SQLiteEntry.Animate.Status} INTEGER,${SQLiteEntry.Animate.Create} TEXT" +
-            "${SQLiteEntry.Animate.Icon} TEXT,${SQLiteEntry.Animate.Memo} TEXT" +
+            "${SQLiteEntry.Animate.Fps} INTEGER,${SQLiteEntry.Animate.Ratio} INTEGER," +
+            "${SQLiteEntry.Animate.Count} INTEGER,${SQLiteEntry.Animate.Tag} INTEGER," +
+            "${SQLiteEntry.Animate.Status} INTEGER,${SQLiteEntry.Animate.Create} TEXT," +
+            "${SQLiteEntry.Animate.Icon} TEXT,${SQLiteEntry.Animate.Memo} TEXT," +
             "${SQLiteEntry.Animate.Name} TEXT,${SQLiteEntry.Animate.Path} TEXT)"
 const val SQL_DELETE_ANIM = "DROP TABLE IF EXISTS ${SQLiteEntry.Animate.Table}"
 

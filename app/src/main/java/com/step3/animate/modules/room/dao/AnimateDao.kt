@@ -21,7 +21,7 @@ interface AnimateDao {
     fun findById(id: Int): List<Animate>
 
     @Insert
-    fun insertAll(vararg users: Animate)
+    fun insert(user: Animate)
 
     @Delete
     fun delete(user: Animate)
