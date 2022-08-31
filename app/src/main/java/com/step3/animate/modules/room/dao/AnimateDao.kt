@@ -18,11 +18,11 @@ interface AnimateDao {
     fun getAll(): List<Animate>
 
     @Query("SELECT * FROM animate WHERE id IN (:id)")
-    fun findById(id: Int): List<Animate>
+    fun findById(id: Int): Animate
 
     @Insert
-    fun insert(user: Animate)
+    fun insert(anim: Animate)
 
     @Delete
-    fun delete(user: Animate)
+    fun delete(anim: Animate)
 }

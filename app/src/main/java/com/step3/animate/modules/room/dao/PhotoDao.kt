@@ -18,14 +18,14 @@ interface PhotoDao {
     fun getAll(): List<Photo>
 
     @Query("SELECT * FROM photo WHERE id IN (:id)")
-    fun findById(id: Int): List<Photo>
+    fun findById(id: Int): Photo
 
     @Query("SELECT * FROM photo WHERE aid IN (:aid) LIMIT 1")
     fun findByAnimId(aid: Int): Photo
 
     @Insert
-    fun insert(user: Photo)
+    fun insert(photo: Photo)
 
     @Delete
-    fun delete(user: Photo)
+    fun delete(photo: Photo)
 }

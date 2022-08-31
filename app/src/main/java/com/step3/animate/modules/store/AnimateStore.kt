@@ -1,5 +1,9 @@
 package com.step3.animate.modules.store
 
+import android.content.Context
+import android.util.Log
+import com.step3.animate.modules.room.AppDatabase
+import com.step3.animate.modules.room.dao.AnimateDao
 import com.step3.animate.modules.room.entity.Animate
 
 /**
@@ -8,11 +12,22 @@ import com.step3.animate.modules.room.entity.Animate
  * Desc:
  */
 class AnimateStore {
-    fun getAll(): List<Animate> {
-        TODO("Not yet implemented")
+    private val TAG = "AnimateStore"
+    private var animDao: AnimateDao? = null
+
+    constructor(context: Context) {
+        animDao = AppDatabase.getInstance()?.animateDao()
     }
 
-    fun findById(id: Int): List<Animate> {
+    fun getAll(): List<Animate> {
+        val list = animDao?.getAll()
+        list?.forEach {
+            Log.i(TAG, it.toString())
+        }
+        return list!!
+    }
+
+    fun findById(id: Int): Animate {
         TODO("Not yet implemented")
     }
 

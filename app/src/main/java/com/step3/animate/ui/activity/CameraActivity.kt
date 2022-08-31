@@ -80,7 +80,7 @@ class CameraActivity : AppAvtivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
         savePath = this.filesDir.path + "/animate/photo"
         if (!File(savePath).exists()) {
-            File(savePath).mkdirs();
+            File(savePath).mkdirs()
         }
         photoView = findViewById<ImageView>(R.id.last_take_photo)
         btnView = findViewById<Button>(R.id.take_photo_btn)
@@ -149,7 +149,7 @@ class CameraActivity : AppAvtivity() {
 
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     Log.i(TAG, "onImageSaved") // 此处是子线程非UI线程
-                    imgUri = outputFileResults.savedUri;
+                    imgUri = outputFileResults.savedUri
                     photoStore.insert(Photo(animId, name, imgUri.toString()))
                     // 刷新状态
                     this@CameraActivity.runOnUiThread {

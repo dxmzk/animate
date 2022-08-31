@@ -3,6 +3,7 @@ package com.step3.animate.modules.store
 import android.content.Context
 import android.util.Log
 import com.step3.animate.modules.room.AppDatabase
+import com.step3.animate.modules.room.dao.PhotoDao
 import com.step3.animate.modules.room.entity.Photo
 
 /**
@@ -12,17 +13,18 @@ import com.step3.animate.modules.room.entity.Photo
  */
 class PhotoStore {
     private val TAG = "PhotoStore"
-    private var db: AppDatabase? = null
+    private var photoDao: PhotoDao? = null
 
     constructor(context: Context) {
-        db = AppDatabase.getInstance()
+        photoDao = AppDatabase.getInstance()?.photoDao()
     }
 
-    fun getAll() {
-        val list = db?.photoDao()?.getAll()
+    fun getAll(): List<Photo> {
+        val list = photoDao?.getAll()
         list?.forEach {
             Log.i(TAG, it.toString())
         }
+        return list!!
     }
 
     fun findById(id: Int) {
@@ -34,7 +36,7 @@ class PhotoStore {
     }
 
     fun insert(photo: Photo) {
-
+        photoDao?.insert(photo)
     }
 
     fun delete(photo: Photo) {

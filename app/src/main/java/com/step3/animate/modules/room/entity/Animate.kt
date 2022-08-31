@@ -11,7 +11,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "animate")
 data class Animate(
+    val name: String,
+    val path: String,
+) {
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-
-)
+    var id = 0
+}
