@@ -1,6 +1,8 @@
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
@@ -41,7 +43,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+//    annotationProcessor "androidx.room:room-compiler:$room_version" // java开发使用
+    kapt "androidx.room:room-compiler:$room_version" // kotlin开发使用
 
     implementation "androidx.camera:camera-core:$camerax_version"
     // CameraX Camera2 extensions

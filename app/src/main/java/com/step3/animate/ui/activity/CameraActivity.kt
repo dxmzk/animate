@@ -18,7 +18,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.step3.animate.R
 import com.step3.animate.modules.base.AppAvtivity
 import com.step3.animate.modules.room.entity.Photo
-import com.step3.animate.modules.room.store.PhotoStore
+import com.step3.animate.modules.store.PhotoStore
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,7 +32,7 @@ import java.util.concurrent.Executors
  */
 class CameraActivity : AppAvtivity() {
     private val TAG = "CameraActivity";
-    private val poolSize = 8;
+    private var animId = 1;
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var camera: Camera
     private lateinit var photoStore: PhotoStore
@@ -49,7 +49,6 @@ class CameraActivity : AppAvtivity() {
         setContentView(R.layout.act_camera)
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         initView()
-        onDisplayListener()
         photoStore = PhotoStore(this.applicationContext)
     }
 
@@ -151,7 +150,7 @@ class CameraActivity : AppAvtivity() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     Log.i(TAG, "onImageSaved") // 此处是子线程非UI线程
                     imgUri = outputFileResults.savedUri;
-                    photoStore.insert(Photo(1,1, name, imgUri.toString()))
+                    photoStore.insert(Photo(animId, name, imgUri.toString()))
                     // 刷新状态
                     this@CameraActivity.runOnUiThread {
                         btnView.isEnabled = true

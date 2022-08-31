@@ -10,10 +10,10 @@ import android.content.Context
 class Test {
 
     fun getPhoto(context: Context) {
-        val list = getOpenDb(context).photoDao().getAll();
+        val list = AppDatabase.getInstance()!!.photoDao().getAll();
     }
 
     fun getAnimate(context: Context) {
-        val list = getOpenDb(context).animateDao().getAll();
+        val list = AppDatabase.getInstance()!!.animateDao().getAll();
     }
 }

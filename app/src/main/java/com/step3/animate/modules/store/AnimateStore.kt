@@ -1,6 +1,5 @@
-package com.step3.animate.modules.room.store
+package com.step3.animate.modules.store
 
-import com.step3.animate.modules.room.dao.AnimateDao
 import com.step3.animate.modules.room.entity.Animate
 
 /**

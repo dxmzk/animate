@@ -1,9 +1,8 @@
-package com.step3.animate.modules.room.store
+package com.step3.animate.modules.store
 
 import android.content.Context
 import android.util.Log
 import com.step3.animate.modules.room.AppDatabase
-import com.step3.animate.modules.room.RoomHelper
 import com.step3.animate.modules.room.entity.Photo
 
 /**
