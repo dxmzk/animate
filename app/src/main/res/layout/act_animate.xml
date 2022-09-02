@@ -2,27 +2,118 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin16">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/anim_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                app:boxBackgroundColor="@color/white"
+                android:hint="@string/project_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@string/long_str" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/anim_detail_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
+                app:endIconMode="clear_text"
+                android:hint="@string/project_desc">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="@string/long_str" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project_count" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20张" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project_fps" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="30"
+                android:min="6"
+                android:progress="12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project_cover" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cover_h"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/anim_detail_memo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                android:hint="@string/project_memo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:text="@string/long_str" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/margin8">
+
         <Button
             android:id="@+id/create_animate_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin16"
-            android:paddingVertical="@dimen/margin10"
             android:layout_gravity="center_horizontal"
-            android:textSize="16sp"
+            android:layout_marginHorizontal="@dimen/margin16"
+            android:fontFamily="sans-serif"
+            android:paddingVertical="@dimen/margin10"
+            android:text="@string/add_anim"
             android:textFontWeight="600"
-            android:text="@string/add_anim"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </FrameLayout>
 </LinearLayout>

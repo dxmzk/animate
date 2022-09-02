@@ -8,6 +8,7 @@
     <dimen name="margin48">48dp</dimen>
     <dimen name="margin56">56dp</dimen>
     <dimen name="take_layout">120dp</dimen>
+    <dimen name="cover_h">300dp</dimen>
 
     <dimen name="k2w">2560dp</dimen>
     <dimen name="k2h">1440dp</dimen>
