@@ -14,6 +14,10 @@
     <string name="project_del">删除项目</string>
     <string name="long_str">很长很长很长很长很长很长的一段很长很长很长很长很长很长的文字。如果觉得不够长还可以继续很长很长很长很长很长很长的写一段很长很长很长很长很长很长的文字</string>
 
+    <string name="img_count0">0张</string>
+    <string name="def_name">新定格</string>
+    <string name="def_desc">一个默认的定格动画项目</string>
+
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
     <string name="delete">删除</string>
@@ -21,4 +25,5 @@
     <string name="save">保存</string>
     <string name="play">播放</string>
     <string name="pause">暂停</string>
+    <string name="take">继续拍摄</string>
 </resources>

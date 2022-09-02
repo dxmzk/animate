@@ -3,12 +3,20 @@
     <dimen name="margin3">3dp</dimen>
     <dimen name="margin8">8dp</dimen>
     <dimen name="margin10">10dp</dimen>
+    <dimen name="margin12">12dp</dimen>
+    <dimen name="margin14">14dp</dimen>
     <dimen name="margin16">16dp</dimen>
+    <dimen name="margin20">20dp</dimen>
+    <dimen name="margin26">26dp</dimen>
     <dimen name="margin32">32dp</dimen>
     <dimen name="margin48">48dp</dimen>
     <dimen name="margin56">56dp</dimen>
+    <dimen name="margin80">80dp</dimen>
+    <dimen name="margin96">96dp</dimen>
+    <dimen name="margin120">120dp</dimen>
+    <dimen name="margin160">160dp</dimen>
     <dimen name="take_layout">120dp</dimen>
-    <dimen name="cover_h">300dp</dimen>
+    <dimen name="cover_h">200dp</dimen>
 
     <dimen name="k2w">2560dp</dimen>
     <dimen name="k2h">1440dp</dimen>

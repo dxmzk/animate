@@ -1,6 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -16,8 +14,7 @@
         <item name="android:statusBarColor">@color/status_bar</item>
         <!-- Customize your theme here. -->
         <item name="controlBackground">@color/white</item>
-        <item name="android:colorBackground">@color/status_bar</item>
-
+        <item name="android:colorBackground">@color/white</item>
     </style>
 
     <style name="Launcher" parent="AppTheme">
@@ -39,6 +36,14 @@
         <item name="android:statusBarColor">@color/status_bar</item>
         <!-- Customize your theme here. -->
         <item name="controlBackground">@color/white</item>
+    </style>
 
+    <style name="CustomInputLayout" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorHint">#BDBDBD</item>
+        <item name="colorControlNormal">#000000</item>
+        <item name="colorControlActivated">#38CC3D</item>
+        <item name="colorControlHighlight">#63A3D7</item>
+        <item name="android:windowTranslucentStatus">true</item>
+<!--        <item name="android:colorError">#63A3D7</item>-->
     </style>
 </resources>

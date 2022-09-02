@@ -18,6 +18,7 @@ import androidx.room.Transaction
 import com.google.common.util.concurrent.ListenableFuture
 import com.step3.animate.R
 import com.step3.animate.modules.base.AppActivity
+import com.step3.animate.modules.base.SeekBarChangeListener
 import com.step3.animate.modules.room.entity.Photo
 import com.step3.animate.modules.store.PhotoStore
 import java.io.File
@@ -33,7 +34,7 @@ import java.util.concurrent.Executors
  */
 class CameraActivity : AppActivity() {
     private val TAG = "CameraActivity";
-    private var animId = 1;
+    private var animId = 0;
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var camera: Camera
     private lateinit var photoStore: PhotoStore
@@ -42,6 +43,7 @@ class CameraActivity : AppActivity() {
     private lateinit var btnView: Button
     private lateinit var previewView: PreviewView
     private lateinit var savePath: String
+    private var folder = ""
     private var imgUri: Uri? = null
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
 
@@ -49,6 +51,9 @@ class CameraActivity : AppActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_camera)
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        animId = intent.getIntExtra("pid", 0)
+        folder = intent.getStringExtra("folder").toString()
+        Log.i(TAG, "${animId} = ${folder}")
         initView()
         getPhotoStore()
     }
@@ -79,19 +84,16 @@ class CameraActivity : AppActivity() {
         previewView.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
         previewView.scaleType = PreviewView.ScaleType.FIT_CENTER
         cameraExecutor = Executors.newSingleThreadExecutor()
-        savePath = this.filesDir.path + "/animate/photo"
+        savePath = this.filesDir.path + "/animate/photo/${folder}"
         if (!File(savePath).exists()) {
             File(savePath).mkdirs()
         }
         photoView = findViewById<ImageView>(R.id.last_take_photo)
         btnView = findViewById<Button>(R.id.take_photo_btn)
         btnView.setOnClickListener(View.OnClickListener { onTakePhoto() })
-        findViewById<SeekBar>(R.id.photo_alpha_bar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(var1: SeekBar?, var2: Int, var3: Boolean) {
-                photoView.alpha = var2 / 100.0F
+        findViewById<SeekBar>(R.id.photo_alpha_bar).setOnSeekBarChangeListener(object : SeekBarChangeListener() {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
             }
-            override fun onStartTrackingTouch(var1: SeekBar?) {}
-            override fun onStopTrackingTouch(var1: SeekBar?) {}
         })
 
         cameraProviderFuture.addListener(Runnable {
@@ -137,7 +139,7 @@ class CameraActivity : AppActivity() {
     }
 
     private fun onTakePhoto() {
-        val name = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS", Locale.CHINA)
+        val name = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.CHINA)
             .format(System.currentTimeMillis()) + ".jpg"
         val outputFileOptions = ImageCapture.OutputFileOptions.Builder(File(savePath, name)).build()
         btnView.isEnabled = false

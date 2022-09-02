@@ -14,7 +14,7 @@ import com.step3.animate.modules.room.entity.Photo
 
 @Dao
 interface PhotoDao {
-    @Query("SELECT * FROM photo")
+    @Query("SELECT * FROM photo ORDER BY id ASC")
     fun getAll(): List<Photo>
 
     @Query("SELECT * FROM photo WHERE id IN (:id)")

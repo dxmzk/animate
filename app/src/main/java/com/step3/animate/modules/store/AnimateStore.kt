@@ -25,14 +25,21 @@ class AnimateStore {
     }
 
     fun findById(id: Int): Animate {
-        TODO("Not yet implemented")
+        val anim = animDao?.findById(id)
+        return anim!!
     }
 
     fun insert(anim: Animate) {
-        TODO("Not yet implemented")
+        Log.i(TAG, anim.toString())
+        animDao?.insert(anim)
+    }
+
+    fun update(anim: Animate) {
+        Log.i(TAG, anim.toString())
+        animDao?.update(anim)
     }
 
     fun delete(anim: Animate) {
-        TODO("Not yet implemented")
+        animDao?.delete(anim)
     }
 }

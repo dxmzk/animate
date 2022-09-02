@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/margin16"
+    android:layout_marginBottom="@dimen/margin12"
+    android:background="@color/white">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/anim_item_cover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/margin160"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/anim_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/anim_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/margin32"
+            android:layout_marginLeft="@dimen/margin12"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/font20"
+            android:text="@string/img_count0"/>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/anim_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin8"
+        android:textColor="@color/font_gray"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+</LinearLayout>

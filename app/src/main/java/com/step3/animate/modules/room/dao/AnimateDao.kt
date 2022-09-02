@@ -1,9 +1,6 @@
 package com.step3.animate.modules.room.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.step3.animate.modules.room.entity.Animate
 
 /**
@@ -14,7 +11,7 @@ import com.step3.animate.modules.room.entity.Animate
 
 @Dao
 interface AnimateDao {
-    @Query("SELECT * FROM animate")
+    @Query("SELECT * FROM animate ORDER BY id DESC")
     fun getAll(): List<Animate>
 
     @Query("SELECT * FROM animate WHERE id IN (:id)")
@@ -22,6 +19,9 @@ interface AnimateDao {
 
     @Insert
     fun insert(anim: Animate)
+
+    @Update
+    fun update(anim: Animate)
 
     @Delete
     fun delete(anim: Animate)

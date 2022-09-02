@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -14,87 +14,112 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/margin16">
+            android:layout_marginHorizontal="@dimen/margin8"
+            android:layout_marginVertical="@dimen/margin16">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/anim_detail_name"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
+                android:paddingHorizontal="@dimen/margin8">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/anim_detail_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/cover_h"
+                    android:scaleType="fitCenter" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/anim_detail_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="@dimen/margin12"
+                    android:layout_marginBottom="@dimen/margin12"
+                    android:text="@string/img_count0"
+                    android:textColor="@color/font_black"
+                    android:textSize="@dimen/font20"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin26"
+                android:hint="@string/project_name"
                 app:boxBackgroundColor="@color/white"
-                android:hint="@string/project_name">
+                app:boxStrokeWidth="0dp"
+                app:counterTextColor="@color/font_black"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/anim_detail_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
-                    android:text="@string/long_str" />
+                    android:maxLength="32"
+                    android:textSize="@dimen/font16"
+                    android:text="@string/def_name"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/anim_detail_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20"
+                android:hint="@string/project_desc"
                 app:boxBackgroundColor="@color/white"
-                app:endIconMode="clear_text"
-                android:hint="@string/project_desc">
+                app:boxStrokeWidth="0dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/anim_detail_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
-                    android:text="@string/long_str" />
+                    android:maxLength="100"
+                    android:textSize="@dimen/font16"
+                    android:text="@string/def_desc"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/project_count" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20张" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/project_fps" />
-
-            <SeekBar
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="30"
-                android:min="6"
-                android:progress="12" />
+                android:layout_marginTop="@dimen/margin32"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/project_cover" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin12"
+                    android:background="@color/transparent"
+                    android:layout_marginLeft="@dimen/margin16"
+                    android:hint="@string/project_fps"
+                    android:textSize="@dimen/font16"
+                    android:enabled="false"/>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/cover_h"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/ic_launcher_round" />
+                <SeekBar
+                    android:id="@+id/anim_detail_fps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="30"
+                    android:min="6"
+                    android:progress="12" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/anim_detail_memo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
-                android:hint="@string/project_memo">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="5"
-                    android:text="@string/long_str" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:minHeight="@dimen/margin160"
+                android:layout_marginTop="@dimen/margin48"
+                android:layout_marginHorizontal="@dimen/margin12"
+                android:background="@drawable/input_box"
+                android:padding="@dimen/margin8"
+                android:gravity="start"
+                android:maxLength="200"
+                android:hint="@string/project_memo"
+                android:textSize="@dimen/font16" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -104,14 +129,14 @@
         android:paddingVertical="@dimen/margin8">
 
         <Button
-            android:id="@+id/create_animate_btn"
+            android:id="@+id/commit_anim_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="@dimen/margin16"
             android:fontFamily="sans-serif"
             android:paddingVertical="@dimen/margin10"
-            android:text="@string/add_anim"
+            android:text="@string/take"
             android:textFontWeight="600"
             android:textSize="16sp"
             android:textStyle="bold" />

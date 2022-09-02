@@ -7,6 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FF000000</color>
     <color name="black">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
     <color name="status_bar">#FF000000</color>
     <color name="launch_bg">#FF000000</color>
+
+    <color name="input_bg">#FF131313</color>
+    <!--  文字  -->
+    <color name="font_white">#FF000000</color>
+    <color name="font_black">#FFFFFFFF</color>
+    <color name="font_gray">#FFC2C2C2</color>
+    <color name="font_hint">#FFA6A6A6</color>
+    <color name="font_alert">#FF767676</color>
 </resources>
