@@ -1,8 +1,8 @@
 package com.step3.animate.ui.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.SeekBar
@@ -34,6 +34,15 @@ class AnimateActivity : AppActivity() {
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(pid < 1) {
+            pid = intent.getIntExtra("pid", 0)
+            pPath = intent.getStringExtra("folder").toString()
+        }
+    }
+
+    @Transaction
     private fun initView() {
         val nameView = findViewById<TextInputEditText>(R.id.anim_detail_name)
         val descView = findViewById<TextInputEditText>(R.id.anim_detail_desc)
@@ -57,6 +66,18 @@ class AnimateActivity : AppActivity() {
             val memo = memoView.text!!.toString().trim()
             saveProject(name, desc, memo)
         })
+
+        val name = intent.getStringExtra("title")
+        if (name != null) {
+            val desc = intent.getStringExtra("desc")
+            val memo = intent.getStringExtra("memo")
+            val caver = intent.getStringExtra("cover")
+            val fps = intent.getIntExtra("fps", 12)
+            fpsView.progress = fps
+            descView.setText(desc)
+            memoView.setText(memo)
+            coverView.setImageURI(Uri.parse(caver))
+        }
 
     }
 

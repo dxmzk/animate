@@ -18,7 +18,7 @@ import android.provider.BaseColumns
  * - id
  * - name       -项目名
  * - path       -项目路径
- * - icon       -封面图
+ * - cover      -封面图
  * - fps        -帧率
  * - memo       -备注
  * - count      -图片输了
@@ -49,7 +49,7 @@ const val SQL_CREATE_ANIM =
             "${SQLiteEntry.Animate.Fps} INTEGER,${SQLiteEntry.Animate.Ratio} INTEGER," +
             "${SQLiteEntry.Animate.Count} INTEGER,${SQLiteEntry.Animate.Tag} INTEGER," +
             "${SQLiteEntry.Animate.Status} INTEGER,${SQLiteEntry.Animate.Create} TEXT," +
-            "${SQLiteEntry.Animate.Icon} TEXT,${SQLiteEntry.Animate.Memo} TEXT," +
+            "${SQLiteEntry.Animate.Cover} TEXT,${SQLiteEntry.Animate.Memo} TEXT," +
             "${SQLiteEntry.Animate.Name} TEXT,${SQLiteEntry.Animate.Path} TEXT)"
 const val SQL_DELETE_ANIM = "DROP TABLE IF EXISTS ${SQLiteEntry.Animate.Table}"
 
@@ -64,7 +64,7 @@ class SQLiteEntry {
         const val Id = "id"
         const val Name = "name"
         const val Path = "path"
-        const val Icon = "icon"
+        const val Cover = "cover"
         const val Fps = "fps"
         const val Memo = "memo"
         const val Count = "count"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin3">3dp</dimen>
+    <dimen name="margin6">6dp</dimen>
     <dimen name="margin8">8dp</dimen>
     <dimen name="margin10">10dp</dimen>
     <dimen name="margin12">12dp</dimen>

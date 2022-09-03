@@ -27,7 +27,7 @@ data class Animate(
     var ratio = 0
     var status = 0
     var tag = 0
-    var icon = ""
+    var cover = ""
 //    var desc = ""
 //    var memo = ""
     var date = SimpleDateFormat("yyyy-MM-dd HH-mm-ss", Locale.CHINA)

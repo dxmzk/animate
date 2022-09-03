@@ -56,7 +56,7 @@ abstract class AppDatabase : RoomDatabase() {
                         executors.diskIO().execute {
                             addDelay()
                             val database = initDB(context, executors)
-                            database?.setDatabaseCreated()
+//                            database?.setDatabaseCreated()
                         }
                     }
                 })

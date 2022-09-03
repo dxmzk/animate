@@ -19,4 +19,22 @@
     <color name="font_gray">#FF323232</color>
     <color name="font_hint">#FF676767</color>
     <color name="font_alert">#FF969696</color>
+
+    <!--  夜间模式颜色  -->
+    <color name="nig_white">#FFFFFFFF</color>
+    <color name="nig_white_e">#FFEEEEEE</color>
+    <color name="nig_white_d">#FFDDDDDD</color>
+    <color name="nig_white_c">#FFCCCCCC</color>
+    <color name="nig_white_b">#FFBBBBBB</color>
+    <color name="nig_white_a">#FFAAAAAA</color>
+    <color name="nig_white_9">#FF999999</color>
+    <color name="nig_white_8">#FF888888</color>
+    <color name="nig_white_7">#FF777777</color>
+    <color name="nig_white_6">#FF666666</color>
+    <color name="nig_white_5">#FF555555</color>
+    <color name="nig_white_4">#FF444444</color>
+    <color name="nig_white_3">#FF333333</color>
+    <color name="nig_white_2">#FF222222</color>
+    <color name="nig_white_1">#FF111111</color>
+    <color name="nig_black">#FF000000</color>
 </resources>

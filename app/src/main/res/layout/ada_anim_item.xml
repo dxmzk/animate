@@ -4,16 +4,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginHorizontal="@dimen/margin16"
-    android:layout_marginBottom="@dimen/margin12"
-    android:background="@color/white">
+    android:layout_marginVertical="@dimen/margin8"
+    android:paddingBottom="@dimen/margin8"
+    android:background="@color/white"
+    android:id="@+id/anim_item_layout">
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/anim_item_cover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/margin160"/>
+        android:minHeight="@dimen/cover_h"
+        android:background="@color/nig_white_2" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin6">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/anim_item_name"
             android:layout_width="wrap_content"
@@ -38,7 +42,7 @@
         android:id="@+id/anim_item_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin8"
+        android:layout_marginTop="@dimen/margin3"
         android:textColor="@color/font_gray"
         android:maxLines="2"
         android:ellipsize="end"/>

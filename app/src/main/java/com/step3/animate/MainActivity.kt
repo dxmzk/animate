@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         findViewById<FloatingActionButton>(R.id.add_animate_btn).setOnClickListener(View.OnClickListener {
-            addAnimate()
+            addAnimate(null)
         })
         recycleView = findViewById(R.id.anim_list_recycler)
         val lm  = LinearLayoutManager(this)
         recycleView.layoutManager = lm
-//        openCamera()
+
     }
 
     private fun updateList(list: ArrayList<Animate>) {
@@ -54,15 +54,28 @@ class MainActivity : AppCompatActivity() {
         itemList.addAll(list)
         if(recycleAdapter == null) {
             recycleAdapter = AnimListAdapter(this, itemList)
+            recycleAdapter?.addOnItemClickListener(object :AnimListAdapter.OnItemClickListener<Animate> {
+                override fun onItemClick(data: Animate, position: Int) {
+                    addAnimate(data)
+                }
+            })
             recycleView.adapter = recycleAdapter
         }else {
             recycleAdapter?.notifyDataSetChanged()
         }
-        Log.i(TAG, itemList.toString())
     }
 
-    private fun addAnimate() {
+    private fun addAnimate(data: Animate?) {
         val intent = Intent(this, AnimateActivity::class.java)
+        if (data != null) {
+            intent.putExtra("pid", data.id)
+            intent.putExtra("folder", data.path)
+            intent.putExtra("title", data.name)
+            intent.putExtra("desc", data.desc)
+            intent.putExtra("memo", data.memo)
+            intent.putExtra("fps", data.fps)
+            intent.putExtra("cover", data.cover)
+        }
         startActivity(intent)
     }
 
@@ -75,9 +88,6 @@ class MainActivity : AppCompatActivity() {
     private fun getAnimates() {
         animStore = AnimateStore(applicationContext)
         val list = animStore.getAll()
-//        list?.forEach {
-//            Log.i(TAG, it.toString())
-//        }
         if (list.isNotEmpty()) {
             updateList(list as ArrayList<Animate>)
         }

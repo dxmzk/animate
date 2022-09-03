@@ -26,7 +26,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/cover_h"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:background="@color/nig_white_2"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/anim_detail_count"
                     android:layout_width="wrap_content"
