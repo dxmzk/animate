@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/cover_h"
                     android:scaleType="fitCenter"
-                    android:background="@color/nig_white_2"/>
+                    android:background="@color/nig_white_e"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/anim_detail_count"
                     android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                     android:layout_marginRight="@dimen/margin12"
                     android:layout_marginBottom="@dimen/margin12"
                     android:text="@string/img_count0"
-                    android:textColor="@color/font_black"
+                    android:textColor="@color/nig_black"
                     android:textSize="@dimen/font20"
                     android:textStyle="bold" />
             </FrameLayout>
@@ -46,9 +46,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin26"
                 android:hint="@string/project_name"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/nig_white"
                 app:boxStrokeWidth="0dp"
-                app:counterTextColor="@color/font_black"
+                app:counterTextColor="@color/nig_black"
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin20"
                 android:hint="@string/project_desc"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/nig_white"
                 app:boxStrokeWidth="0dp"
                 app:endIconMode="clear_text">
 
