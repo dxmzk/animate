@@ -9,7 +9,7 @@ import com.step3.animate.modules.base.AppActivity
 /**
  * Author: Meng
  * Date: 2022/09/02
- * Desc:
+ * Desc: 启动页
  */
 class LaunchActivity: AppActivity() {
 
@@ -26,5 +26,6 @@ class LaunchActivity: AppActivity() {
     private fun openApp() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }
