@@ -15,7 +15,8 @@ class RetrofitServices {
 
     init {
         builder = Retrofit.Builder()
-        .addConverterFactory(MyGsonConverterFactory.create())
+            .client(Network.client())
+            .addConverterFactory(MyGsonConverterFactory.create())
 
         create()
     }
@@ -34,24 +35,24 @@ class RetrofitServices {
     }
 
     /**
-     val call = RetrofitServices().main().detail(1).enqueue(object : Callback<Any>{
+    val call = RetrofitServices().main().detail(1).enqueue(object : Callback<Any>{
 
-        override fun onFailure(call: retrofit2.Call<Any>, t: Throwable) {
-            t.printStackTrace()
-        }
+    override fun onFailure(call: retrofit2.Call<Any>, t: Throwable) {
+    t.printStackTrace()
+    }
 
-        override fun onResponse(call: retrofit2.Call<Any>, response: retrofit2.Response<Any>) {
-            if (response.isSuccessful) {
-                for ((name, value) in response.headers()) {
-                    println("$name: $value")
-                }
-                println(response.body().toString())
-            }
-            println(call.request().url)
-        }
+    override fun onResponse(call: retrofit2.Call<Any>, response: retrofit2.Response<Any>) {
+    if (response.isSuccessful) {
+    for ((name, value) in response.headers()) {
+    println("$name: $value")
+    }
+    println(response.body().toString())
+    }
+    println(call.request().url)
+    }
     })
      */
-    fun main(): MainApi{
+    fun main(): MainApi {
         val url = Config.getUrl("base")
         val retrofit = builder.baseUrl(url)
             .build()

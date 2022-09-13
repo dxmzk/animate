@@ -1,5 +1,7 @@
 package com.bnq.pda3.module.network
 
+import com.bnq.pda3.module.network.interceptor.LogInterceptor
+import com.bnq.pda3.module.network.interceptor.NetInterceptor
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -8,30 +10,38 @@ import okio.IOException
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-
 /**
  * Author: Meng
  * Date: 2022/09/05
  * Desc:
+ * https://github.com/square/okhttp/tree/master/samples/guide/src/main/java/okhttp3/recipes
  */
 class Network {
-    private val MEDIA_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
-    private val MEDIA_PNG = "image/png".toMediaType()
-    private val MEDIA_JSON: MediaType = "application/json; charset=utf-8".toMediaType()
-    private lateinit var client: OkHttpClient
 
-    constructor() {
-        init()
+    companion object {
+        private val MEDIA_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
+        private val MEDIA_PNG = "image/png".toMediaType()
+        private val MEDIA_JSON: MediaType = "application/json; charset=utf-8".toMediaType()
+        private lateinit var client: OkHttpClient
+
+        fun client(): OkHttpClient {
+            return create()
+        }
+
+        private fun create(): OkHttpClient {
+//            val cache = Cache(cacheDir, 1024 * 1024)
+//            cache.evictAll()
+            return OkHttpClient.Builder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(50, TimeUnit.SECONDS)
+                .readTimeout(50, TimeUnit.SECONDS)
+                .callTimeout(20, TimeUnit.SECONDS)
+                .addNetworkInterceptor(NetInterceptor())
+                .addInterceptor(LogInterceptor())
+                .build()
+        }
     }
 
-    fun init() {
-        client = OkHttpClient.Builder()
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(50, TimeUnit.SECONDS)
-            .readTimeout(50, TimeUnit.SECONDS)
-            .callTimeout(20, TimeUnit.SECONDS)
-            .build()
-    }
 
     fun request() {
         getRequest("base", "", "")
