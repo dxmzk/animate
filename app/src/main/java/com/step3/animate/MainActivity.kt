@@ -13,6 +13,7 @@ import com.step3.animate.modules.room.entity.Animate
 import com.step3.animate.modules.store.AnimateStore
 import com.step3.animate.ui.activity.AnimateActivity
 import com.step3.animate.ui.activity.CameraActivity
+import com.step3.animate.ui.activity.WebActivity
 import com.step3.animate.ui.adapter.AnimListAdapter
 
 /**
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addAnimate(data: Animate?) {
-        val intent = Intent(this, AnimateActivity::class.java)
+        val intent = Intent(this, WebActivity::class.java)
         if (data != null) {
             intent.putExtra("pid", data.id)
             intent.putExtra("folder", data.path)

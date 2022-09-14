@@ -36,7 +36,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.activity.AnimateActivity" />
         <activity android:theme="@style/CameraTheme" android:name=".ui.activity.CameraActivity" />
-
+        <activity android:name=".ui.activity.WebActivity" android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
         <activity android:name=".ui.activity.DemoActivity"/>
 
     </application>
