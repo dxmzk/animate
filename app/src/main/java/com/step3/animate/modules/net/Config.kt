@@ -12,24 +12,23 @@ enum class AppENV {
 
 class Config {
     companion object {
-        val env: AppENV = AppENV.TEST
-
-        private val prod: HashMap<String, String> = HashMap()
-        private val test: HashMap<String, String> = HashMap()
+        val ENV: AppENV = AppENV.TEST
+        private val hostMap: HashMap<String, String> = HashMap()
 
         init {
-            prod["base"] = "https://sp.bnq.com.cn/web/"
-            prod["account"] = "https://auth.bnq.com.cn/web/"
-            prod["oss"] = "https://oss.bnq.com.cn/api/fileUpload/uploadImageFile/"
-
-            test["base"] = "https://sp-test.bnq.com.cn/web/"
-            test["account"] = "https://auth-test.bnq.com.cn/web/"
-            test["oss"] = "https://oss-test.bnq.com.cn/api/fileUpload/uploadImageFile/"
+            // 生产环境 -prod
+            hostMap["base-prod"] = "https://sp.bnq.com.cn/web/"
+            hostMap["account-prod"] = "https://auth.bnq.com.cn/web/"
+            hostMap["oss-prod"] = "https://oss.bnq.com.cn/api/fileUpload/uploadImageFile/"
+            // 测试环境 -test
+            hostMap["base-test"] = "https://sp-test.bnq.com.cn/web/"
+            hostMap["account-test"] = "https://auth-test.bnq.com.cn/web/"
+            hostMap["oss-test"] = "https://oss-test.bnq.com.cn/api/fileUpload/uploadImageFile/"
         }
 
         fun getUrl(host: String = "base"): String? {
-            val envMap = if (env == AppENV.PROD) prod else test
-            return envMap[host]
+            val env = if(ENV == AppENV.TEST) "test" else "prod"
+            return hostMap["$host-$env"]
         }
     }
 }
