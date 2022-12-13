@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Progress">
+        <attr name="bgColor" format="color"/> <!--背景-->
+        <attr name="txColor" format="color"/><!--前景景-->
+        <attr name="mgColor" format="color"/><!--左右圆角蒙层色-->
+        <attr name="text" format="string"/><!--进度字体颜色-->
+        <attr name="txSize" format="dimension"/><!--进度字体大小-->
+        <attr name="value" format="float"/><!--进度-->
+    </declare-styleable>
+</resources>
