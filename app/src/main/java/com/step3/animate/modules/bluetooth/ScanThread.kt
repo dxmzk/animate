@@ -1,4 +1,4 @@
-package com.bnq.pda3.module.bluetooth
+package com.bnq.pda3.modules.bluetooth
 
 /**
  * Author: Meng

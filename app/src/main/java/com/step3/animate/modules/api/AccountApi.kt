@@ -1,4 +1,4 @@
-package com.bnq.pda3.module.api
+package com.step3.animate.modules.api
 
 import retrofit2.Call
 import retrofit2.http.GET

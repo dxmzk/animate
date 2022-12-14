@@ -1,8 +1,9 @@
-package com.bnq.pda3.module.network
+package com.step3.animate.modules.net
 
-import com.bnq.pda3.module.api.AccountApi
-import com.bnq.pda3.module.api.MainApi
-import com.bnq.pda3.module.network.retrofit.MyGsonConverterFactory
+import com.bnq.pda3.module.network.Config
+import com.bnq.pda3.module.network.Network
+import com.step3.animate.modules.api.*
+import com.step3.animate.modules.network.retrofit.MyGsonConverterFactory
 import retrofit2.Retrofit
 
 /**

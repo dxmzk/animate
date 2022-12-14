@@ -31,7 +31,7 @@
         android:layout_marginBottom="@dimen/margin56"
         android:layout_gravity="bottom">
 
-        <Button
+        <View
             android:id="@+id/take_photo_btn"
             android:layout_width="64dp"
             android:layout_height="64dp"

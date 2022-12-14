@@ -40,7 +40,7 @@ class CameraActivity : AppActivity() {
     private lateinit var photoStore: PhotoStore
     private var imageCapture: ImageCapture? = null
     private lateinit var photoView: ImageView
-    private lateinit var btnView: Button
+    private lateinit var btnView: View
     private lateinit var previewView: PreviewView
     private lateinit var savePath: String
     private var folder = ""
@@ -89,7 +89,7 @@ class CameraActivity : AppActivity() {
             File(savePath).mkdirs()
         }
         photoView = findViewById<ImageView>(R.id.last_take_photo)
-        btnView = findViewById<Button>(R.id.take_photo_btn)
+        btnView = findViewById<View>(R.id.take_photo_btn)
         btnView.setOnClickListener(View.OnClickListener { onTakePhoto() })
         findViewById<SeekBar>(R.id.photo_alpha_bar).setOnSeekBarChangeListener(object : SeekBarChangeListener() {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {

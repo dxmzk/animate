@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addAnimate(data: Animate?) {
-        val intent = Intent(this, WebActivity::class.java)
+        val intent = Intent(this, AnimateActivity::class.java)
         if (data != null) {
             intent.putExtra("pid", data.id)
             intent.putExtra("folder", data.path)
