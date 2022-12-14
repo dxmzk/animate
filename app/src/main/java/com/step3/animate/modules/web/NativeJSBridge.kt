@@ -14,7 +14,7 @@ import android.widget.Toast
 class NativeJSBridge(private val context: Context) {
 
     /**
-     *
+     * 消息toast
      * msg：消息； mode: 0-短；1-长
      */
     @JavascriptInterface
