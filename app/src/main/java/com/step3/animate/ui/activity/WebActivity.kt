@@ -28,7 +28,8 @@ class WebActivity: AppActivity() {
         initView()
     }
 
-    fun initView() {
+    private fun initView() {
+//        val params = intent.action
         webView = findViewById<WebView>(R.id.app_web_view)
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
@@ -36,7 +37,7 @@ class WebActivity: AppActivity() {
         webView.webViewClient = MyWebViewClient()
         webView.webChromeClient = MyWebChromeClient()
 
-        webView.loadUrl("http://192.168.253.67:8091")
+        webView.loadUrl("https://bing.com")
 
     }
 
