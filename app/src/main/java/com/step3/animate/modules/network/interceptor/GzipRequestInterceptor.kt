@@ -1,4 +1,4 @@
-package com.bnq.pda3.module.network.interceptor
+package com.step3.animate.modules.network.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.MediaType

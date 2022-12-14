@@ -1,4 +1,4 @@
-package com.bnq.pda3.module.network
+package com.step3.animate.modules.network
 
 import okhttp3.*
 import okio.IOException

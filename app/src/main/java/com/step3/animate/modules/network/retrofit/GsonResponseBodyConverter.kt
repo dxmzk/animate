@@ -17,12 +17,14 @@ class GsonResponseBodyConverter<T>(private val gson: Gson, private val typeAdapt
 
     override fun convert(value: ResponseBody): T {
         val jsonReader = gson.newJsonReader(value.charStream())
-        return value.use { value ->
+        return try {
             val result: T = typeAdapter.read(jsonReader)
             if (jsonReader.peek() != JsonToken.END_DOCUMENT) {
                 throw JsonIOException("JSON document was not fully consumed.")
             }
             result
+        } finally {
+            value.close()
         }
     }
 

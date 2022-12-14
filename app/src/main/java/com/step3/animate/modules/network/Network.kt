@@ -5,6 +5,7 @@ import com.step3.animate.modules.network.interceptor.NetInterceptor
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
+import okio.BufferedSink
 import okio.IOException
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -20,6 +21,7 @@ class Network {
     companion object {
         private val MEDIA_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
         private val MEDIA_PNG = "image/png".toMediaType()
+        private val MEDIA_JSON: MediaType = "application/json; charset=utf-8".toMediaType()
         private lateinit var client: OkHttpClient
 
         fun client(): OkHttpClient {
@@ -27,6 +29,8 @@ class Network {
         }
 
         private fun create(): OkHttpClient {
+//            val cache = Cache(cacheDir, 1024 * 1024)
+//            cache.evictAll()
             return OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(50, TimeUnit.SECONDS)
@@ -38,11 +42,12 @@ class Network {
         }
     }
 
-    fun requestDemo() {
-        request("base", "", "")
+
+    fun request() {
+        getRequest("base", "", "")
     }
 
-    fun request(host: String, url: String, method: String) {
+    private fun getRequest(host: String, url: String, method: String) {
 
         val request = when (method.lowercase()) {
             "post" -> post(host, url)
@@ -67,7 +72,7 @@ class Network {
     }
 
     private fun get(host: String, url: String): Request {
-        val path = Config.getBaseUrl(host) + url
+        val path = Config.getHostUrl(host) + url
         return Request.Builder()
             .url(path)
             .header("User-Agent", "OkHttp Headers.java")
@@ -82,7 +87,7 @@ class Network {
         val body = FormBody.Builder()
             .add("search", "Jurassic Park")
             .build()
-        val path = Config.getBaseUrl(host) + url
+        val path = Config.getHostUrl(host) + url
         return Request.Builder()
             .url(path)
             .post(body)
@@ -114,4 +119,32 @@ class Network {
             .post(requestBody)
             .build()
     }
+
+    private fun postStream() {
+        val requestBody = object : RequestBody() {
+            override fun contentType() = MEDIA_MARKDOWN
+
+            override fun writeTo(sink: BufferedSink) {
+                sink.writeUtf8("Numbers\n")
+                sink.writeUtf8("-------\n")
+                for (i in 2..997) {
+                    sink.writeUtf8(String.format(" * $i = ${factor(i)}\n"))
+                }
+            }
+
+            private fun factor(n: Int): String {
+                for (i in 2 until n) {
+                    val x = n / i
+                    if (x * i == n) return "${factor(x)} × $i"
+                }
+                return n.toString()
+            }
+        }
+
+        val request = Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(requestBody)
+            .build()
+    }
+
 }

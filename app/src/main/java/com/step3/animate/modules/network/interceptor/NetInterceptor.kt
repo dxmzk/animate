@@ -18,6 +18,7 @@ class NetInterceptor: Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
+//
 //        if (myConfig.isInvalid()) {
 //            return Response.Builder()
 //                .request(chain.request())
@@ -29,8 +30,7 @@ class NetInterceptor: Interceptor {
 //        }
         val originalResponse = chain.proceed(chain.request())
         return originalResponse.newBuilder()
-            .header("Cache-Control", "max-age=300")
-            .header("Token", "12345654321")
+            .header("Cache-Control", "max-age=60")
             .build()
     }
 }

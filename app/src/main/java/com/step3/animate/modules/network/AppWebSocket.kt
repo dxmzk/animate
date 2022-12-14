@@ -22,7 +22,7 @@ enum class SocketStatus {
 
 class AppWebSocket : WebSocketListener() {
     private val TAG = "AppWebSocket"
-    private val wsUrl: String = Config.getBaseUrl("ws")
+    private val wsUrl: String = Config.getHostUrl("ws")
     private var webSocket: WebSocket?
     private var status: SocketStatus
     private val client: OkHttpClient = OkHttpClient.Builder()
