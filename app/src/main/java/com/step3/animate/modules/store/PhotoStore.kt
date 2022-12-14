@@ -28,8 +28,8 @@ class PhotoStore {
         TODO("Not yet implemented")
     }
 
-    fun findByAnimId(aid: Int) {
-        TODO("Not yet implemented")
+    fun findByAnimId(aid: Int): List<Photo>? {
+        return photoDao?.findByAnimId(aid)
     }
 
     fun insert(photo: Photo) {

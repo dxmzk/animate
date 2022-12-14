@@ -19,8 +19,11 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.step3.animate.R
 import com.step3.animate.modules.base.AppActivity
 import com.step3.animate.modules.base.SeekBarChangeListener
+import com.step3.animate.modules.room.entity.Animate
 import com.step3.animate.modules.room.entity.Photo
+import com.step3.animate.modules.store.AnimateStore
 import com.step3.animate.modules.store.PhotoStore
+import com.step3.animate.utils.Files
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,11 +36,13 @@ import java.util.concurrent.Executors
  * Desc: 拍照界面
  */
 class CameraActivity : AppActivity() {
-    private val TAG = "CameraActivity";
-    private var animId = 0;
+    private val TAG = "CameraActivity"
+    private var animId = 0
+    private var animItem: Animate? = null
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var camera: Camera
     private lateinit var photoStore: PhotoStore
+    private lateinit var animStore: AnimateStore
     private var imageCapture: ImageCapture? = null
     private lateinit var photoView: ImageView
     private lateinit var btnView: View
@@ -53,7 +58,7 @@ class CameraActivity : AppActivity() {
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         animId = intent.getIntExtra("pid", 0)
         folder = intent.getStringExtra("folder").toString()
-        Log.i(TAG, "${animId} = ${folder}")
+
         initView()
         getPhotoStore()
     }
@@ -130,7 +135,7 @@ class CameraActivity : AppActivity() {
 
         preview.setSurfaceProvider(previewView.surfaceProvider)
 
-        val camera = cameraProvider!!.bindToLifecycle(
+         camera = cameraProvider!!.bindToLifecycle(
             this as LifecycleOwner,
             cameraSelector,
             imageCapture,
@@ -139,8 +144,7 @@ class CameraActivity : AppActivity() {
     }
 
     private fun onTakePhoto() {
-        val name = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.CHINA)
-            .format(System.currentTimeMillis()) + ".jpg"
+        val name = Files.getImgName()
         val outputFileOptions = ImageCapture.OutputFileOptions.Builder(File(savePath, name)).build()
         btnView.isEnabled = false
         imageCapture?.takePicture(outputFileOptions, cameraExecutor,
@@ -154,6 +158,12 @@ class CameraActivity : AppActivity() {
                     Log.i(TAG, "onImageSaved") // 此处是子线程非UI线程
                     imgUri = outputFileResults.savedUri
                     photoStore.insert(Photo(animId, name, imgUri.toString()))
+                    if(animItem != null) {
+                        animItem!!.count += 1
+                        animItem!!.cover = imgUri.toString()
+                        animStore.update(animItem!!)
+                    }
+
                     // 刷新状态
                     this@CameraActivity.runOnUiThread {
                         btnView.isEnabled = true
@@ -168,5 +178,9 @@ class CameraActivity : AppActivity() {
     @Transaction
     private fun getPhotoStore() {
         photoStore = PhotoStore(applicationContext)
+        animStore = AnimateStore(applicationContext)
+        if(animId > 0) {
+            animItem = animStore.findById(animId)
+        }
     }
 }

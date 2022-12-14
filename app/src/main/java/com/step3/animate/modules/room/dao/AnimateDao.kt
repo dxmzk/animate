@@ -18,7 +18,10 @@ interface AnimateDao {
     fun findById(id: Int): Animate
 
     @Insert
-    fun insert(anim: Animate)
+    fun insert(anim: Animate): Long
+
+//    @Insert
+//    fun inserts(anim: Animate, anim2: Animate): Array<Long>
 
     @Update
     fun update(anim: Animate)

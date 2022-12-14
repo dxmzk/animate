@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/margin12"
+    android:layout_marginVertical="@dimen/margin6"
+    android:id="@+id/anim_item_layout">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/gallery_item_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cover_h"
+        android:scaleType="centerCrop"
+        android:background="@color/nig_white_e" />
+</LinearLayout>

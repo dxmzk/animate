@@ -29,10 +29,20 @@ class AnimateStore {
         return anim!!
     }
 
-    fun insert(anim: Animate) {
+    fun insert(anim: Animate): Long {
         Log.i(TAG, anim.toString())
-        animDao?.insert(anim)
+        var id = animDao?.insert(anim)
+        return id?:0
     }
+
+//    fun inserts(anim: Animate, anim2: Animate): Array<Long> {
+//        Log.i(TAG, anim.toString())
+//        var ids = animDao?.inserts(anim, anim2)
+//        if(ids == null || ids.isNotEmpty()) {
+//            ids = arrayOf(0)
+//        }
+//        return ids
+//    }
 
     fun update(anim: Animate) {
         Log.i(TAG, anim.toString())

@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("memo", data.memo)
             intent.putExtra("fps", data.fps)
             intent.putExtra("cover", data.cover)
+            intent.putExtra("count", data.count)
         }
         startActivity(intent)
     }

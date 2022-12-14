@@ -31,10 +31,10 @@ class AnimListAdapter(private val context: Context, private val animList: ArrayL
 
     override fun onBindViewHolder(holder: AnimListAdapter.ViewHolder, position: Int) {
         val item = animList.get(position)
-        holder.coverView.setImageURI(Uri.parse(item.path))
-        holder.nameView.text = "${item.name}"
+        holder.coverView.setImageURI(Uri.parse(item.cover))
+        holder.nameView.text = item.name
         holder.countView.text = "${item.count}张"
-        holder.descView.text = "${item.desc}"
+        holder.descView.text = item.desc
 
         if(itemListener != null) {
             holder.layout.setOnClickListener(View.OnClickListener {

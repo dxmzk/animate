@@ -20,8 +20,8 @@ interface PhotoDao {
     @Query("SELECT * FROM photo WHERE id IN (:id)")
     fun findById(id: Int): Photo
 
-    @Query("SELECT * FROM photo WHERE aid IN (:aid) LIMIT 1")
-    fun findByAnimId(aid: Int): Photo
+    @Query("SELECT * FROM photo WHERE aid IN (:aid)")
+    fun findByAnimId(aid: Int): List<Photo>
 
     @Insert
     fun insert(photo: Photo)

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 class DragAdapter(private val mContext: Context, private val mList: ArrayList<String>) :
     RecyclerView.Adapter<DragAdapter.ViewHolder>() {
 
-
     val fixedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
