@@ -15,7 +15,8 @@ class Files {
             val year = calendar.get(Calendar.YEAR)%100
             val month = formatNum(calendar.get(Calendar.MONTH) + 1)
             val day = formatNum(calendar.get(Calendar.DAY_OF_MONTH))
-            return "A${year}${month}${day}"
+            val second = Math.random() * calendar.get(Calendar.SECOND) * (calendar.get(Calendar.HOUR)+10) * calendar.get(Calendar.MINUTE)
+            return "A${year}${month}${day}${second.toInt()}"
         }
 
         fun getImgName(): String {

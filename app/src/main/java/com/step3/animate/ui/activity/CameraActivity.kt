@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.math.roundToInt
 
 /**
  * Author: Meng
@@ -98,6 +99,7 @@ class CameraActivity : AppActivity() {
         btnView.setOnClickListener(View.OnClickListener { onTakePhoto() })
         findViewById<SeekBar>(R.id.photo_alpha_bar).setOnSeekBarChangeListener(object : SeekBarChangeListener() {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                photoView.imageAlpha = (255 * p1 / 100.0).roundToInt()
             }
         })
 
