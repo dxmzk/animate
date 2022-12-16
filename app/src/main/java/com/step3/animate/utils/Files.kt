@@ -1,6 +1,10 @@
 package com.step3.animate.utils
 
+import android.content.Context
+import android.graphics.Bitmap
+import java.io.*
 import java.util.*
+
 
 /**
  * Author: Meng
@@ -32,6 +36,49 @@ class Files {
 
         private fun formatNum(num: Int): String {
             return "${if(num > 9) "" else "0"}${num}"
+        }
+
+
+        fun saveBitmap(bm: Bitmap, context: Context, name: String?): String? {
+            try {
+                val f: File = context.getFileStreamPath(name)
+                if (f.exists()) {
+                    f.delete()
+                }
+                val out = FileOutputStream(f)
+                bm.compress(Bitmap.CompressFormat.PNG, 90, out)
+                out.flush()
+                out.close()
+                return f.getPath()
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return null
+        }
+
+        fun copyFile(oldPath: String?, newPath: String?): Boolean {
+            return try {
+                val newFile = File(newPath)
+                val oldFile = File(oldPath)
+                val files = oldFile.list()
+                var temp: File
+                val fileInputStream = FileInputStream(oldFile)
+                val fileOutputStream = FileOutputStream(newFile)
+                val buffer = ByteArray(1024)
+                var byteRead: Int
+                while (fileInputStream.read(buffer).also { byteRead = it } != -1) {
+                    fileOutputStream.write(buffer, 0, byteRead)
+                }
+                fileInputStream.close()
+                fileOutputStream.flush()
+                fileOutputStream.close()
+                true
+            } catch (e: Exception) {
+                e.printStackTrace()
+                false
+            }
         }
     }
 }
