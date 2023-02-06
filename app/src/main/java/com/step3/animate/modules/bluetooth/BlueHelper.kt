@@ -29,7 +29,7 @@ class BlueHelper {
         fun init(context: AppCompatActivity) {
             val bluetoothManager: BluetoothManager =
                 context.getSystemService(BluetoothManager::class.java)
-            val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
+            val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter // 设备是否支持蓝牙  true为支持
             if (bluetoothAdapter != null) {
                 if (!bluetoothAdapter.isEnabled) {
                     val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
